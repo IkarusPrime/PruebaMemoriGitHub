@@ -1,6 +1,4 @@
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -37,7 +35,7 @@ body {
 }
 
 .front {
-  background: #FAB942 url('img/restaurante/mesa.png') no-repeat center center / contain;
+  background: #FAB942 url('img/mesa.png') no-repeat center center / contain;
 }
 
 .back {
@@ -55,19 +53,6 @@ body {
 .match .front {
   background: #6589F9 !important;
 }
-
-/* 
-.points{
-  text-align: center;
-  margin: 0 auto;
-}
-
-.title{
-  margin-top: 20px;
-  text-transform: uppercase;
-  color: rgb(0, 0, 0);
-  text-align: center;
-} */
 
 h3{
   margin: 0 auto;
@@ -97,4 +82,8 @@ h3{
   text-transform: uppercase;
   color: black;
   text-align: center;
+}
+
+#num3, #num2, #num1{
+  margin-top: 0;
 }
