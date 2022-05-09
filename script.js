@@ -80,6 +80,9 @@ var match = function match() {//pareja correcta
   selected.forEach(function (card) {//si la pareja es correcta se le pone el status match para que no se puede seleccionar otra vez
     card.classList.add('match');//sustituye el valor selected por el match en el atributo class
   });
+  if (pairs==12) {
+    //victoria, mostrar puntuacion total/premio
+  }
 };
 
 var resetGuesses = function resetGuesses() {//resetea las variables de las cartas
@@ -121,9 +124,7 @@ grid.addEventListener('click', function (event) {//se ejecuta al girar una carta
       if (firstGuess === secondGuess) {//hay match
         score=score+5;
         document.getElementById("num3").innerHTML=score;
-        if (pairs==12) {
-          //victoria, mostrar puntuacion total/premio
-        }
+        
         setTimeout(match, delay);//desaparecen las cartas
       }else{
         errors++;
