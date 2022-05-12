@@ -48,7 +48,8 @@ var secondGuess = '';//definicion de la variable para la segunda carta seleccion
 var count = 0;//contador para la comparación
 var previousTarget = null;//indica si ha carta en status selected
 var delay = 1200;
-let pairs = 0;
+let pairs = 0, errors = 0, moves = 0, score = 0;
+let premio = '';
 var game = document.getElementById('game');//indica el div del tablero
 var grid = document.createElement('section');//crea un elemento de tipo section para mostrar las cartas
 grid.setAttribute('class', 'grid');//establece el atributo class con valor grid
@@ -73,16 +74,29 @@ gameGrid.forEach(function (item) {
   card.appendChild(back);//introduce la foto del dorso de la carta
 });
 
-let errors = 0, moves = 0, score = 0;
-
 var match = function match() {//pareja correcta
   var selected = document.querySelectorAll('.selected');
   selected.forEach(function (card) {//si la pareja es correcta se le pone el status match para que no se puede seleccionar otra vez
     card.classList.add('match');//sustituye el valor selected por el match en el atributo class
+    if(pairs == 12){
+      if (40 > score && score > 30) {
+        premio = "cafe/chupito/copa";
+        premios(premio)
+      } else if (45 > score && score > 39){
+        premio = "postre";
+        premios(premio)
+      }else if (50 > score && score > 44){
+        premio = "5% descuento";
+        premios(premio)
+      }else if (55 > score && score > 49){
+        premio = "10% descuento";
+        premios(premio)
+      }else if (60 > score && score > 54){
+        premio = "20% descuento";
+        premios(premio)
+      }
+    }
   });
-  if (pairs==12) {
-    //victoria, mostrar puntuacion total/premio
-  }
 };
 
 var resetGuesses = function resetGuesses() {//resetea las variables de las cartas
@@ -123,12 +137,12 @@ grid.addEventListener('click', function (event) {//se ejecuta al girar una carta
     if (firstGuess && secondGuess) {//comparación para match
       if (firstGuess === secondGuess) {//hay match
         score=score+5;
+        pairs=pairs+1;
         document.getElementById("num3").innerHTML=score;
-        
         setTimeout(match, delay);//desaparecen las cartas
       }else{
         errors++;
-        score=score-1;
+        score=score-2;
         if(score<0) score=0;
         document.getElementById("num3").innerHTML=score;
         document.getElementById("num2").innerHTML=errors;
@@ -138,3 +152,7 @@ grid.addEventListener('click', function (event) {//se ejecuta al girar una carta
     previousTarget = clicked;//indica que hay una carta selected 
   }
 });
+
+function premios(premio){
+  document.getElementById("qrText").innerHTML=premio;
+}

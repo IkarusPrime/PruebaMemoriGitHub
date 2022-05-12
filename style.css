@@ -64,7 +64,7 @@ h3{
   margin: 1%;
 }
 
-#moves div, #errors div, #score div{
+#moves div, #errors div, #score div, #premio{
   margin: 10px auto 25px auto;
   height: 80px;
   line-height: 80px;
